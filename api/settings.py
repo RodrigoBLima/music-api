@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_swagger',
     'corsheaders',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -86,6 +87,9 @@ DATABASES = {
     }
 }
 
+# AUTHENTICATE APP
+AUTH_USER_MODEL = 'accounts.User'
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 ALLOWED_HOSTS = ['*']
@@ -108,6 +112,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+# REST_FRAMEWORK = {
+#     # ...
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#        'rest_framework.authentication.BasicAuthentication',
+#        'rest_framework.authentication.SessionAuthentication',
+#        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+#     )
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

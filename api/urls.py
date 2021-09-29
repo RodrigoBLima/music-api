@@ -16,15 +16,29 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
+from django.conf.urls.static import static
+from django.conf import settings
 
-# from .viewsets import ViewSet
+
+# TO  BETTER VISUALIZATION API
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='API para fãs de música')
+
+# VIEWSETS
+from accounts.viewsets import UserViewSet
 
 router = routers.DefaultRouter()
 
-# router.register(r'path', ViewSet)
+router.register(r'accounts', UserViewSet)
 
 urlpatterns = [
+    # url(r'^api/v1/$', schema_view),
     url('admin/', admin.site.urls),
     url(r'api/v1/', include(router.urls)),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
