@@ -1,12 +1,15 @@
 from rest_framework import serializers
 from .models import Album
 
+from musics.serializers import TrackSerializer
+from musics.models import Track
+
 class AlbumSerializer(serializers.ModelSerializer):
     tracks = TrackSerializer(many=True, read_only=True)
-
+    artist = TrackSerializer(many=True, read_only=True)
     class Meta:
         model = Album
-        fields = ['album_name', 'artist', 'tracks']
+        fields = ['album_name', 'artist', 'tracks', 'artist']
 
     def create(self, validated_data):
         tracks_data = validated_data.pop('tracks')
