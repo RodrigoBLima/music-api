@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'corsheaders',
     'accounts',
+    'artists'
 ]
 
 MIDDLEWARE = [
