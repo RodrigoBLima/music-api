@@ -37,7 +37,7 @@ router.register(r'artists', ArtistsViewSet)
 router.register(r'playlists', AlbumViewSet)
 
 urlpatterns = [
-    # url(r'^api/v1/$', schema_view),
+    url(r'^api/v1/$', schema_view),
     url('admin/', admin.site.urls),
     url(r'api/v1/', include(router.urls)),
 

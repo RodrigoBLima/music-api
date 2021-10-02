@@ -37,13 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'rest_framework_swagger',
+    'rest_framework',
+    'oauth2_provider',
     'corsheaders',
     'accounts',
     'artists',
     'musics',
-    'playlist'
+    'playlist',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+             'libraries' : {
+                'staticfiles': 'django.templatetags.static',
+            }
         },
     },
 ]
@@ -116,14 +120,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# REST_FRAMEWORK = {
-#     # ...
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#        'rest_framework.authentication.BasicAuthentication',
-#        'rest_framework.authentication.SessionAuthentication',
-#        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
-#     )
-# }
+REST_FRAMEWORK = {
+    # ...
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' ,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.BasicAuthentication',
+       'rest_framework.authentication.SessionAuthentication',
+       'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    )
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
