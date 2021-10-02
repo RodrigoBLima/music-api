@@ -6,10 +6,9 @@ from musics.models import Track
 
 class AlbumSerializer(serializers.ModelSerializer):
     tracks = TrackSerializer(many=True, read_only=True)
-    artist = TrackSerializer(many=True, read_only=True)
     class Meta:
         model = Album
-        fields = ['album_name', 'artist', 'tracks', 'artist']
+        fields = ['album_name', 'tracks']
 
     def create(self, validated_data):
         tracks_data = validated_data.pop('tracks')

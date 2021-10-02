@@ -25,16 +25,16 @@ schema_view = get_swagger_view(title='API para fãs de música')
 
 # VIEWSETS
 from accounts.viewsets import UserViewSet
-# from musics.viewsets import TracksViewSet
-# from artists.viewsets import ArtistsViewSet
-# from playlist.viewsets import AlbumViewSet
+from musics.viewsets import TracksViewSet
+from artists.viewsets import ArtistsViewSet
+from playlist.viewsets import AlbumViewSet
 
 router = routers.DefaultRouter()
 
 router.register(r'accounts', UserViewSet)
-# router.register(r'musics', TracksViewSet)
-# router.register(r'artists', ArtistsViewSet)
-# router.register(r'playlists', AlbumViewSet)
+router.register(r'musics', TracksViewSet)
+router.register(r'artists', ArtistsViewSet)
+router.register(r'playlists', AlbumViewSet)
 
 urlpatterns = [
     # url(r'^api/v1/$', schema_view),

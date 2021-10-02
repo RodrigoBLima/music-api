@@ -7,3 +7,5 @@ db.sqlite3
 media
 static
 data/db
+__pycache__
+postgres_data
